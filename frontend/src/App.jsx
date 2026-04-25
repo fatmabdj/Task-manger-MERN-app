@@ -20,6 +20,11 @@ function App() {
     setLoading(false);
   }, []);
 
+  // ✅ دالة تسجيل الخروج
+  const handleLogout = () => {
+    setIsAuthenticated(false);  // هذا يغير الحالة ويعيد التوجيه إلى Auth pages
+  };
+
   if (loading) {
     return (
       <div style={{ 
@@ -35,38 +40,37 @@ function App() {
   }
 
   // ✅ صفحات Auth - تستخدم تصميمك (styles.css)
- if (!isAuthenticated) {
+  if (!isAuthenticated) {
+    return (
+      <BrowserRouter>
+        <div className="auth-layout">
+          <Routes>
+            <Route path="/" element={<Signup setIsAuthenticated={setIsAuthenticated} />} />
+            <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    );
+  }
+
+  // ✅ صفحات التطبيق - تستخدم تصميم صديقك (paper-theme.css)
   return (
     <BrowserRouter>
-      <div className="auth-layout">
-        <Routes>
-          <Route path="/" element={<Signup setIsAuthenticated={setIsAuthenticated} />} />
-          <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
-        </Routes>
+      <div className="main-layout">
+        <div className="app">
+          <Sidebar onLogout={handleLogout} />  {/* ✅ أضف onLogout هنا */}
+          <div className="main">
+            <Routes>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/tasks" element={<Tasks />} />
+              <Route path="/notes" element={<Notes />} />
+              <Route path="/" element={<Dashboard />} />
+            </Routes>
+          </div>
+        </div>
       </div>
     </BrowserRouter>
   );
 }
-
-  // ✅ صفحات التطبيق - تستخدم تصميم صديقك (paper-theme.css)
- return (
-  <BrowserRouter>
-    <div className="main-layout">
-      <div className="app">
-        <Sidebar />
-        <div className="main">
-          <Routes>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/tasks" element={<Tasks />} />
-            <Route path="/notes" element={<Notes />} />
-            <Route path="/" element={<Dashboard />} />
-          </Routes>
-        </div>
-      </div>
-    </div>
-  </BrowserRouter>
-);
-}
-
 
 export default App;

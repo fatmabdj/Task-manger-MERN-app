@@ -1,11 +1,16 @@
 import { NavLink, useNavigate } from "react-router-dom";
 
-export default function Sidebar() {
+export default function Sidebar({ onLogout }) {  // ✅ أضف onLogout هنا
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    
+    if (onLogout) {
+      onLogout();  // ✅ نادي الدالة اللي جاية من App.jsx
+    }
+    
     navigate("/login");
   };
 
