@@ -1,0 +1,79 @@
+/* =========================================
+   GLOBAL SHARED VARIABLES + RESET
+   ========================================= */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&family=Caveat:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap');
+
+/* Shared variables (merged from both themes) */
+:root {
+  /* Auth theme */
+  --primary: #76845B;
+  --secondary: #D8D3B3;
+  --background: #F5F5F0;
+  --text: #603314;
+
+  /* Paper theme */
+  --paper-bg: #f0ebe0;
+  --paper-card: #faf7f0;
+  --paper-dark: #ede8db;
+  --paper-line: #c4b99a;
+  --paper-line-faint: #d8d1c0;
+
+  --ink: #2c2416;
+  --ink-muted: #6b5f4a;
+  --ink-faint: #a8997e;
+
+  --accent-red: #c0392b;
+  --accent-blue: #2666a0;
+  --accent-green: #76845B;
+  --accent-amber: #c17f24;
+  --accent-purple: #6b4c9a;
+  --accent-teal: #1a7a6e;
+
+  /* Shared */
+  --border: #c4b99a;
+  --shadow: rgba(44, 36, 22, 0.12);
+
+  /* Fonts */
+  --font-hand: 'Caveat', cursive;
+  --font-body: 'Lora', serif;
+  --font-mono: 'DM Mono', monospace;
+  --font-display: 'Playfair Display', serif;
+  --font-ui: 'Inter', sans-serif;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default spacing */
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+/* Base body */
+body {
+  margin: 0;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Buttons / inputs inherit font by default */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
