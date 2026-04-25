@@ -16,44 +16,44 @@ export default function Sidebar({ onLogout }) {  // ✅ أضف onLogout هنا
 
   return (
     <div className="sidebar">
-      <div className="logo">📒 TaskFlow</div>
+      <div className="logo"> TaskFlow</div>
 
       <NavLink to="/dashboard" className={({ isActive }) => `link ${isActive ? "active" : ""}`}>
-        📊 Dashboard
+        Dashboard
       </NavLink>
 
       <NavLink to="/tasks" className={({ isActive }) => `link ${isActive ? "active" : ""}`}>
-        📋 Tasks
+         Tasks
       </NavLink>
 
       <NavLink to="/notes" className={({ isActive }) => `link ${isActive ? "active" : ""}`}>
-        📝 Notes
+         Notes
       </NavLink>
 
       <div style={{ marginTop: "auto", paddingTop: "20px" }}>
-        <button 
-          onClick={handleLogout}
-          style={{
-            background: "rgba(240,235,224,0.15)",
-            border: "1.5px solid rgba(240,235,224,0.3)",
-            color: "#f0ebe0",
-            borderRadius: "8px",
-            padding: "10px 14px",
-            fontFamily: "Caveat, cursive",
-            fontSize: "17px",
-            width: "100%",
-            cursor: "pointer",
-            transition: "all 0.2s"
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.background = "rgba(240,235,224,0.25)";
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.background = "rgba(240,235,224,0.15)";
-          }}
-        >
-          🚪 Logout
-        </button>
+     <button 
+  onClick={handleLogout}
+  style={{
+    background: "#76845B",  // ✅ غير هذا اللون
+    border: "1.5px solid rgba(255,255,255,0.3)",
+    color: "white",
+    borderRadius: "8px",
+    padding: "10px 14px",
+    fontFamily: "Caveat, cursive",
+    fontSize: "17px",
+    width: "100%",
+    cursor: "pointer",
+    transition: "all 0.2s"
+  }}
+  onMouseEnter={(e) => {
+    e.target.style.background = "#5a6b44";  // ✅ لون أغمق عند المرور
+  }}
+  onMouseLeave={(e) => {
+    e.target.style.background = "#76845B";
+  }}
+>
+   Logout
+</button>
       </div>
     </div>
   );

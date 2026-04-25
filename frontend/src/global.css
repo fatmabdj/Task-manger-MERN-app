@@ -36,11 +36,12 @@
   --shadow: rgba(44, 36, 22, 0.12);
 
   /* Fonts */
-  --font-hand: 'Caveat', cursive;
-  --font-body: 'Lora', serif;
-  --font-mono: 'DM Mono', monospace;
-  --font-display: 'Playfair Display', serif;
-  --font-ui: 'Inter', sans-serif;
+ /* Fonts */
+--font-hand: 'Playfair Display', serif;  /* ✅ غير هذا */
+--font-body: 'Playfair Display', serif;  /* ✅ غير هذا */
+--font-mono: 'DM Mono', monospace;
+--font-display: 'Playfair Display', serif;
+--font-ui: 'Playfair Display', serif;    /* ✅ غير هذا */
 }
 
 /* Reset */

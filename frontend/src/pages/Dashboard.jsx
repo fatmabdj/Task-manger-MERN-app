@@ -1,6 +1,5 @@
-import axios from "axios";
-axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`;
 import { useEffect, useState, useCallback } from "react";
+import axios from "axios";
 import {
   ResponsiveContainer,
   AreaChart,
@@ -39,11 +38,20 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [lastUpdated, setLastUpdated] = useState(null);
+  const [user, setUser] = useState(null);
+
+  // استرجاع بيانات المستخدم
+  useEffect(() => {
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      setUser(JSON.parse(userData));
+    }
+  }, []);
 
   const fetchStats = useCallback(async (isManual = false) => {
     if (isManual) setRefreshing(true);
     try {
-      const res = await axios.get("http://localhost:5000/api/stats");
+      const res = await axios.get("http://localhost:5000/api/tasks/stats");
       setStats(res.data);
     } catch {
       if (!stats) setStats(mockStats);
@@ -52,9 +60,8 @@ export default function Dashboard() {
       setRefreshing(false);
       setLastUpdated(new Date());
     }
-  }, []);
+  }, [stats]);
 
-  // initial fetch + auto-refresh every 30s
   useEffect(() => {
     fetchStats();
     const interval = setInterval(() => fetchStats(), 30000);
@@ -81,12 +88,15 @@ export default function Dashboard() {
     ? lastUpdated.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })
     : "";
 
+  const userName = user?.username || user?.email?.split("@")[0] || "Friend";
+
   return (
     <div className="notebook-dashboard">
       {/* Cover */}
       <div className="notebook-cover">
         <div className="ribbon">This Week</div>
-        <h1>📓 TaskFlow</h1>
+        <h1> Welcome back, {userName}! </h1>
+        <p>Everything you need is ready. Let's make today smooth and productive.</p>
         <p>{today}</p>
 
         <button
