@@ -1,0 +1,257 @@
+/* =========================================
+   AUTH THEME (SCOPED)
+   Everything lives under .auth-layout
+   ========================================= */
+
+.auth-layout {
+  min-height: 100vh;
+  font-family: var(--font-ui);
+  background-color: var(--background);
+}
+
+/* PAGE LAYOUT */
+.auth-layout .auth-page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+
+  background-color: #E1DAC0;
+  background-image:
+    linear-gradient(rgba(84, 74, 62, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(84, 74, 62, 0.3) 1px, transparent 1px);
+
+  background-size: 32px 32px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* LEFT SIDE */
+.auth-layout .left-side {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+
+  transform: translateY(-40px);
+  animation: auth-slideDownHigher 0.8s ease-out forwards;
+}
+
+.auth-layout .left-side h1 {
+  font-family: var(--font-display);
+  color: var(--text);
+  font-size: 42px;
+  line-height: 1.2;
+  max-width: 500px;
+}
+
+.auth-layout .left-side p {
+  color: var(--text);
+  max-width: 450px;
+  font-size: 18px;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+/* RIGHT SIDE */
+.auth-layout .right-side {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CARD */
+.auth-layout .card {
+  width: 340px;
+  padding: 30px;
+  background: var(--secondary);
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+
+  position: relative;
+  z-index: 1;
+
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.05),
+    0 2px 2px rgba(0, 0, 0, 0.05),
+    0 4px 4px rgba(0, 0, 0, 0.05),
+    0 8px 8px rgba(0, 0, 0, 0.05);
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* TITLE */
+.auth-layout h2 {
+  color: var(--text);
+  text-align: center;
+  font-family: var(--font-display);
+  margin-bottom: 10px;
+}
+
+/* INPUTS */
+.auth-layout input {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s ease;
+}
+
+.auth-layout input:focus {
+  outline: none;
+  background-color: white;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(118, 132, 91, 0.1);
+}
+
+/* BUTTON */
+.auth-layout button {
+  padding: 12px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: transform 0.1s ease, filter 0.2s ease;
+}
+
+.auth-layout button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* DECORATIONS */
+.auth-layout .decorations {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.auth-layout .sticker {
+  position: absolute;
+  opacity: 0.85;
+}
+
+/* STICKER 1 */
+.auth-layout .s1 {
+  width: 195px;
+  top: 10%;
+  left: 45%;
+  z-index: 10;
+  transform: rotate(-8deg);
+
+  filter: drop-shadow(4px 6px 8px rgba(0, 0, 0, 0.15));
+
+  animation: auth-stickerDrop 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+/* STICKER 2 */
+.auth-layout .s2 {
+  width: 200px;
+  bottom: -5%;
+  left: 0%;
+  animation: auth-slideDown 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+/* CONTENT */
+.auth-layout .welcome-container {
+  border-left: 3px solid var(--primary);
+  padding-left: 30px;
+  min-height: 300px;
+}
+
+.auth-layout .subtitle {
+  margin-bottom: 20px;
+  font-style: italic;
+  font-family: var(--font-display);
+}
+
+.auth-layout .checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.auth-layout .checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.auth-layout .checkbox {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  background: white;
+}
+
+.auth-layout .checklist-item.done span:last-child {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.auth-layout .checklist-item.done {
+  margin-left: 120px;
+  opacity: 0.6;
+  transform: rotate(1deg);
+}
+
+.auth-layout .checklist-item.todo {
+  margin-left: 0;
+  font-weight: 600;
+}
+
+/* ANIMATIONS */
+@keyframes auth-slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes auth-stickerDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) rotate(-8deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(-8deg);
+  }
+}
+
+@keyframes auth-slideDownHigher {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(-40px);
+  }
+}
