@@ -9,6 +9,13 @@ const TaskSchema = new mongoose.Schema({
   timeSpent: { type: Number, default: 0 },
   createdAt: { type: Date, default: Date.now },
   completedAt: Date,
+  //  أضف هذا الحقل الجديد
+  checklist: [
+    {
+      text: { type: String, required: true },
+      checked: { type: Boolean, default: false }
+    }
+  ]
 });
 
 const Task = mongoose.model("Task", TaskSchema);

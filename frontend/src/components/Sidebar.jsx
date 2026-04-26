@@ -16,7 +16,7 @@ export default function Sidebar({ onLogout }) {  // ✅ أضف onLogout هنا
 
   return (
     <div className="sidebar">
-      <div className="logo"> TaskFlow</div>
+      <div className="logo">TaskFlow</div>
 
       <NavLink to="/dashboard" className={({ isActive }) => `link ${isActive ? "active" : ""}`}>
         Dashboard
@@ -34,12 +34,12 @@ export default function Sidebar({ onLogout }) {  // ✅ أضف onLogout هنا
      <button 
   onClick={handleLogout}
   style={{
-    background: "#76845B",  // ✅ غير هذا اللون
+    background: "#76845B",  //  غير هذا اللون
     border: "1.5px solid rgba(255,255,255,0.3)",
     color: "white",
     borderRadius: "8px",
     padding: "10px 14px",
-    fontFamily: "Caveat, cursive",
+    fontFamily: "Playfair Display, serif",
     fontSize: "17px",
     width: "100%",
     cursor: "pointer",

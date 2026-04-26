@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 
 const NOTE_PALETTES = [
@@ -13,23 +12,41 @@ const NOTE_PALETTES = [
 export default function Notes() {
   const [note, setNote] = useState("");
   const [notes, setNotes] = useState([]);
+  const [isInitialLoad, setIsInitialLoad] = useState(true); // ✅ لمنع الحفظ الفارغ
 
+  // ✅ تحميل الـ notes من localStorage (مرة واحدة فقط عند فتح الصفحة)
   useEffect(() => {
-    setNotes(JSON.parse(localStorage.getItem("notes")) || []);
+    const savedNotes = localStorage.getItem("notes");
+    console.log("📖 Loading notes from localStorage:", savedNotes);
+    if (savedNotes && savedNotes !== "[]") {
+      const parsedNotes = JSON.parse(savedNotes);
+      setNotes(parsedNotes);
+    }
+    setIsInitialLoad(false); // ✅ انتهى التحميل الأولي
   }, []);
 
+  // ✅ حفظ الـ notes في localStorage (يمنع الحفظ الفارغ في البداية)
   useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes));
-  }, [notes]);
+    if (isInitialLoad) return; // ✅ لا تحفظ في التحميل الأول
+    console.log("💾 Saving notes to localStorage:", notes);
+    if (notes.length > 0) {
+      localStorage.setItem("notes", JSON.stringify(notes));
+    } else {
+      // إذا كان array فاضي، لا تحفظ شي (أو احفظ فاضي حسب رغبتك)
+      localStorage.setItem("notes", JSON.stringify(notes));
+    }
+  }, [notes, isInitialLoad]);
 
   const addNote = () => {
     if (!note.trim()) return;
-    setNotes([note, ...notes]);
+    const newNotes = [note, ...notes];
+    setNotes(newNotes);
     setNote("");
   };
 
   const deleteNote = (i) => {
-    setNotes(notes.filter((_, index) => index !== i));
+    const newNotes = notes.filter((_, index) => index !== i);
+    setNotes(newNotes);
   };
 
   const handleKeyDown = (e) => {
@@ -39,7 +56,7 @@ export default function Notes() {
   return (
     <div className="notes-page">
       <div className="notes-header">
-        <h1>📝 Quick Notes</h1>
+        <h1>✎𓂃 Quick Notes</h1>
         <div className="notes-input">
           <textarea
             value={note}
@@ -49,7 +66,7 @@ export default function Notes() {
             rows="3"
           />
           <button onClick={addNote} className="add-note-btn">
-            📌 Pin it
+            Save note
           </button>
         </div>
       </div>
@@ -57,7 +74,7 @@ export default function Notes() {
       <div className="notes-grid">
         {notes.length === 0 ? (
           <div className="empty-wall">
-            <div className="empty-sticky">📌</div>
+            <div className="empty-sticky">────୨ৎ────</div>
             <h3>No notes yet</h3>
             <p>Write your first note above and pin it!</p>
           </div>

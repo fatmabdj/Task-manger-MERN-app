@@ -45,7 +45,7 @@ export default function Login({ setIsAuthenticated }) {  // ✅ أضف setIsAuth
         <div className="left-side">
           <div className="welcome-container">
             <h1>Login and keep the flow going</h1>
-            <p className="subtitle">it been a while </p>
+            <p className="subtitle">it been a while come and get the work done</p>
             <div className="checklist">
               <div className="checklist-item done">
                 <span className="checkbox">✓</span>

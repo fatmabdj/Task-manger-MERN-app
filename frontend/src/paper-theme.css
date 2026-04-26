@@ -77,10 +77,14 @@
   font-family: var(--font-hand);
   font-size: 26px;
   font-weight: 700;
-  color: #f0ebe0;
+  color: #603314;
   margin-bottom: 28px;
   letter-spacing: 0.5px;
   padding: 0 4px;
+  text-decoration: underline;           /* ✅ خط تحتي بسيط */
+  text-decoration-thickness: 1px;       /* ✅ سمك الخط */
+  text-underline-offset: 5px;           /* المسافة بين النص والخط */
+  text-decoration-color: #603314; 
 }
 
 /* LINKS - Modified */
@@ -749,7 +753,7 @@
 /* Sidebar buttons use Caveat */
 .main-layout .sidebar .link,
 .main-layout .sidebar .logout-btn {
-  font-family: var(--font-hand);
+  font-family: 'Playfair Display', serif;
 }
 
 /* Dashboard titles use Caveat */
@@ -757,6 +761,43 @@
 .main-layout .page-title {
   font-family: var(--font-hand);
 }
+
+
+/* Checklist styles */
+.main-layout .checklist-container {
+  margin-top: 10px;
+}
+
+.main-layout .checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.main-layout .checklist-item:hover {
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+}
+
+.main-layout .checklist-checkbox {
+  font-size: 18px;
+}
+
+.main-layout .checklist-text {
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  flex: 1;
+}
+
+.main-layout .checklist-text.checked {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+
 
 /* ANIMATION */
 @keyframes spin {
